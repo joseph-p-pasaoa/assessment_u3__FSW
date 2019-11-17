@@ -12,25 +12,15 @@ const express = require('express');
   const router = express.Router();
 
 
-/* MODELS
-const Researcher = require('../models/Researcher.js');
-*/
-
-/*
-POST : Add new researcher.
-PATCH /:id: Update single researcher.
-DELETE /:id: Delete single researcher.
-*/
-
-
 /* ROUTES */
 router.get('/', getResearchers);
 router.get('/:id', checkInputContent, getResearchers);
 router.post('/', checkInputsExist, checkInputContent, preventDupe, addResearcher); // MADE CHECK BUT I'M ALLOWING DUPE NAMES
 router.patch('/:id', checkInputsExist, checkIdExists, checkInputContent, patchResearcher);
+router.delete('/:id', checkIdExists, checkInputContent, delResearcher);
 
 
-/* MIDDLEWARE */
+/* PRELIM MIDDLEWARE */
 async function checkIdExists (req, res, next) {
   let isIdGood = false;
   if (req.params.id) {
@@ -177,6 +167,7 @@ async function preventDupe (req, res, next) {
   }
 }
 
+/* FINISHING MIDDLEWARES */
 async function addResearcher (req, res, next) {
   let response = null;
   let insertQuery = `
@@ -222,6 +213,26 @@ async function patchResearcher (req, res, next) {
   res.json({
       status: "success",
       message: "researcher record edited",
+      payload: response
+  });
+}
+
+async function delResearcher (req, res, next) {
+  let response = null;
+  let delQuery = `
+    DELETE FROM researchers
+    WHERE id = $/id/
+    RETURNING *;
+  `;
+  const delArg = { id: parseInt(req.params.id.trim()) };
+  try {
+    response = await db.one(delQuery, delArg);
+  } catch (error) {
+    commError(req, res, error, "delResearcher");
+  }
+  res.json({
+      status: "success",
+      message: "researcher has been deleted",
       payload: response
   });
 }
