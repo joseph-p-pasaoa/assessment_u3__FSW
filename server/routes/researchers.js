@@ -46,8 +46,9 @@ async function checkIdExists (req, res, next) {
   }
   if (!isIdGood) {
     res.json({
-        status: "fail",
-        message: "error: cannot find target researcher. please check input and try again"
+        status: "error",
+        message: "error: cannot find target researcher. please check input and try again",
+        payload: null
     });
   } else {
     next();
@@ -73,8 +74,9 @@ function checkInputsExist (req, res, next) { // checks only for complete body da
     }
     res.status(404);
     res.json({
-        status: "fail",
-        message: `error: missing ${missing}. Please check your inputs and try again.`
+        status: "error",
+        message: `error: missing ${missing}. Please check your inputs and try again.`,
+        payload: null
     });
   } else {
     next();
@@ -131,8 +133,9 @@ function checkInputContent (req, res, next) {
     }
     res.status(404);
     res.json({
-        status: "fail",
-        message: `error: ${problems}. Please check your inputs and try again.`
+        status: "error",
+        message: `error: ${problems}. Please check your inputs and try again.`,
+        payload: null
     });
   } else {
     next();
@@ -159,8 +162,9 @@ async function preventDupe (req, res, next) {
   }
   if (isDuplicate) {
     res.json({
-        status: "fail",
-        message: "researcher already exists"
+        status: "error",
+        message: "researcher already exists",
+        payload: null
     });
   } else {
     next();
@@ -257,14 +261,15 @@ async function getResearchers (req, res, next) {
 
   if (!response.length) {
     res.json({
-        status: "fail",
-        message: "no researchers found"
+        status: "error",
+        message: "no researchers found",
+        payload: null
     });
   } else {
     res.json({
         status: "success",
         message: "researchers found",
-        payload: response
+        payload: response.length > 1 ? response : response[0]
     });
   }
 }

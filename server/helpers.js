@@ -15,9 +15,9 @@ const commError = (req, res, err, fxName) => { // handles errors communicating w
   log(`${fxName}: ${err}`);
   res.status(err.status || 500);
   res.json({
-      status: "fail",
-      message: "error: problem communicating with server. please try again later",
-      err: true
+      status: "error",
+      message: "problem communicating with server. please try again later",
+      payload: null
   });
 }
 
