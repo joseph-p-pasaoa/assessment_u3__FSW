@@ -5,9 +5,9 @@ Under the Sea Database Init + Seed || Unit 3 Assessment
 
 
 /* CREATE DATABASE */
-DROP DATABASE IF EXISTS under_the_sea_db;
-CREATE DATABASE under_the_sea_db;
-\c under_the_sea_db;
+DROP DATABASE IF EXISTS under_the_seas_db;
+CREATE DATABASE under_the_seas_db;
+\c under_the_seas_db;
 
 CREATE TABLE researchers (
    id SERIAL PRIMARY KEY,
