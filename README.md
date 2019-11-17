@@ -54,7 +54,7 @@ Once we create our database, we need to provide the research team with a robust 
   - `habitat_id`: Integer, foreign key referencing `id` column in Habitats table.
 
 ### Diagram
-![marine biology db diagram](./assets/Marine_Biology_DB.png)
+![marine biology db diagram](./README_assets/Marine_Biology_DB.png)
 
 ### Seed Data
 
@@ -214,4 +214,4 @@ Connect to your server, and have a website with the following functionality:
 
 ## Rubric
 
-![databaseRubric](./databaseRubric.png)
+![databaseRubric](./README_databaseRubric.png)
