@@ -285,7 +285,7 @@ async function getAnimals (req, res, next) {
   } else {
     res.json({
         status: "success",
-        message: "animal(s) found",
+        message: response.length > 1 ? "animals found" : "animal found",
         payload: response.length > 1 ? response : response[0]
     });
   }
