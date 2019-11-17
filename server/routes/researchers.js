@@ -272,7 +272,7 @@ async function getResearchers (req, res, next) {
   } else {
     res.json({
         status: "success",
-        message: "researcher(s) found",
+        message: response.length > 1 ? "researchers found" : "researcher found",
         payload: response.length > 1 ? response : response[0]
     });
   }
