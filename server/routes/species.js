@@ -5,18 +5,28 @@ Species Route | Under the Seas App | Unit3 Assessment
 
 
 /* HELPERS */
-const { log, db } = require('../helpers.js');
+const { log, db, commError } = require('../helpers.js');
 
 /* MODULE INITS */
 const express = require('express');
   const router = express.Router();
 
 
+/*
+GET /species: Get all species.
+GET /species/:id: Get single species.
+POST /species: Add new species.
+*/
+
 /* ROUTES */
 
 
 
-/* MIDDLEWARE */
+/* PRELIM MIDDLEWARE */
+
+
+
+/* FINAL MIDDLEWARES */
 
 
 

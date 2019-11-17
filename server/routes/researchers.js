@@ -171,7 +171,7 @@ async function preventDupe (req, res, next) {
   }
 }
 
-/* FINISHING MIDDLEWARES */
+/* FINAL MIDDLEWARES */
 async function addResearcher (req, res, next) {
   let response = null;
   let insertQuery = `
