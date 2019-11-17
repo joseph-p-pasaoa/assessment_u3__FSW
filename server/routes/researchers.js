@@ -33,11 +33,11 @@ async function checkIdExists (req, res, next) {
           WHERE id = $/id/
         )
       `;
-      const existArg = { id: req.params.id.trim() };
+      const existArg = { id: parseInt(req.params.id.trim()) };
       try {
         response = await db.any(existQuery, existArg);
       } catch (error) {
-        commError(req, res, error, "preventDupe");
+        commError(req, res, error, "checkIdExists");
       }
       if (response[0].exists) {
         isIdGood = true;
@@ -48,7 +48,7 @@ async function checkIdExists (req, res, next) {
     res.status(404);
     res.json({
         status: "error",
-        message: "error: cannot find target researcher. please check input and try again",
+        message: "cannot find target researcher. please check input and try again",
         payload: null
     });
   } else {
@@ -209,7 +209,7 @@ async function patchResearcher (req, res, next) {
     RETURNING *
   `;
   let patchArgs = {
-    id: Number(req.params.id.trim()),
+    id: parseInt(req.params.id.trim()),
     name: req.body.r_name.trim(),
     job_title: req.body.job_title.trim()
   }
@@ -272,7 +272,7 @@ async function getResearchers (req, res, next) {
   } else {
     res.json({
         status: "success",
-        message: "researchers found",
+        message: "researcher(s) found",
         payload: response.length > 1 ? response : response[0]
     });
   }
