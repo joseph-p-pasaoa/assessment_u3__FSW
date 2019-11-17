@@ -11,7 +11,7 @@ CREATE DATABASE under_the_seas_db;
 
 CREATE TABLE researchers (
    id SERIAL PRIMARY KEY,
-   name VARCHAR(36),
+   name VARCHAR(36) NOT NULL,
    job_title VARCHAR(54)
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE animals (
 
 CREATE TABLE habitats (
    id SERIAL PRIMARY KEY,
-   category VARCHAR(54)
+   category VARCHAR(54) NOT NULL
 );
 
 CREATE TABLE sightings (
