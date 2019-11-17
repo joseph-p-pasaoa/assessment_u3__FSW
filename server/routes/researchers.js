@@ -76,7 +76,7 @@ function checkInputsExist (req, res, next) { // checks only for complete body da
     res.status(404);
     res.json({
         status: "error",
-        message: `error: missing ${missing}. Please check your inputs and try again.`,
+        message: `missing ${missing}. Please check your inputs and try again.`,
         payload: null
     });
   } else {
@@ -135,7 +135,7 @@ function checkInputContent (req, res, next) {
     res.status(404);
     res.json({
         status: "error",
-        message: `error: ${problems}. Please check your inputs and try again.`,
+        message: `${problems}. Please check your inputs and try again.`,
         payload: null
     });
   } else {
