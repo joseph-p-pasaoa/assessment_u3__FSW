@@ -45,6 +45,7 @@ async function checkIdExists (req, res, next) {
     }
   }
   if (!isIdGood) {
+    res.status(404);
     res.json({
         status: "error",
         message: "error: cannot find target researcher. please check input and try again",
@@ -161,6 +162,7 @@ async function preventDupe (req, res, next) {
     }
   }
   if (isDuplicate) {
+    res.status(404);
     res.json({
         status: "error",
         message: "researcher already exists",
@@ -170,6 +172,7 @@ async function preventDupe (req, res, next) {
     next();
   }
 }
+
 
 /* FINAL MIDDLEWARES */
 async function addResearcher (req, res, next) {
@@ -188,6 +191,7 @@ async function addResearcher (req, res, next) {
   } catch (error) {
     commError(req, res, error, "addResearcher");
   }
+  res.status(201);
   res.json({
       status: "success",
       message: "new researcher added",
@@ -258,8 +262,8 @@ async function getResearchers (req, res, next) {
   } catch (error) {
     commError(req, res, error, "getResearcher");
   }
-
   if (!response.length) {
+    res.status(404);
     res.json({
         status: "error",
         message: "no researchers found",
