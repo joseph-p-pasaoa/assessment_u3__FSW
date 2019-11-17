@@ -29,3 +29,13 @@ const grabAllSightings = async () => {
   const response = await serverComm("get", `${researcherId}`);
   return response.payload;
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.
+    document.querySelector('#btnAllSightings').addEventListener("click", (e) => {
+        clearStage();
+        const data = grabAllSightings();
+        document.querySelector('#stage').innerText = data;
+    });
+});
