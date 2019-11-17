@@ -27,15 +27,15 @@ const clearStage = () => {
 const grabAllSightings = async () => {
   const researcherId = document.querySelector('#txtResearcher').value;
   const response = await serverComm("get", `${researcherId}`);
-  return response.payload;
+  return response;
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    document.
-    document.querySelector('#btnAllSightings').addEventListener("click", (e) => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // document.
+    document.querySelector('#btnAllSightings').addEventListener("click", async (e) => {
         clearStage();
-        const data = grabAllSightings();
-        document.querySelector('#stage').innerText = data;
+        const data = await grabAllSightings();
+        document.querySelector('#stage').innerHTML += JSON.stringify(data, null, 2);
     });
 });
