@@ -17,7 +17,7 @@ router.get('/', getResearchers);
 router.get('/:id', checkInputContent, getResearchers);
 router.post('/', checkInputsExist, checkInputContent, preventDupe, addResearcher); // MADE CHECK BUT I'M ALLOWING DUPE NAMES
 router.patch('/:id', checkInputsExist, checkIdExists, checkInputContent, patchResearcher);
-router.delete('/:id', checkIdExists, checkInputContent, delResearcher);
+router.delete('/:id', checkIdExists, delResearcher);
 
 
 /* PRELIM MIDDLEWARE */
@@ -31,7 +31,7 @@ async function checkIdExists (req, res, next) {
           SELECT id
           FROM researchers
           WHERE id = $/id/
-        )
+          )
       `;
       const existArg = { id: parseInt(req.params.id.trim()) };
       try {

@@ -27,14 +27,12 @@ const speciesRT = require('./routes/species.js');
 const animalsRT = require('./routes/animals.js');
 const habitatsRT = require('./routes/habitats.js');
 const sightingsRT = require('./routes/sightings.js');
-const debugRT = require('./routes/debug.js');
     // Connects
 app.use('/researchers', researchersRT);
 app.use('/species', speciesRT);
 app.use('/animals', animalsRT);
 app.use('/habitats', habitatsRT);
 app.use('/sightings', sightingsRT);
-app.use('/debug', debugRT);
 
 
 /* SERVER INIT */

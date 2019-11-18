@@ -12,20 +12,12 @@ const express = require('express');
   const router = express.Router();
 
 
-/*
-GET /animals: Get all animals.
-GET /animals/:id: Get single animal.
-POST /animals: Add new animal.
-PATCH /animals/:id: Update single animal.
-DELETE /animals/:id: Delete single animal.
-*/
-
 /* ROUTES */
 router.get('/', getAnimals);
 router.get('/:id', checkInputContent, getAnimals);
 router.post('/', checkInputsExist, checkInputContent, checkSpeciesIdExists, addAnimal); // I'M ALLOWING DUPE NAMES HERE, TOO
 router.patch('/:id', checkInputsExist, checkIdExists, checkInputContent, checkSpeciesIdExists, patchAnimal);
-router.delete('/:id', checkIdExists, checkInputContent, delAnimal);
+router.delete('/:id', checkIdExists, delAnimal);
 
 
 /* PRELIM MIDDLEWARE */
@@ -190,10 +182,10 @@ async function addAnimal (req, res, next) {
   let response = null;
   let insertQuery = `
     INSERT INTO animals (species_id, nickname) VALUES (
-      $/species_id/
-      , $/nickname/
-      )
-      RETURNING *
+        $/species_id/
+        , $/nickname/
+        )
+        RETURNING *
   `;
   let insertArgs = {
     species_id: parseInt(req.body.species_id.trim()),
@@ -217,7 +209,7 @@ async function patchAnimal (req, res, next) {
   let patchQuery = `
     UPDATE animals 
     SET species_id = $/species_id/
-      , nickname = $/nickname/ 
+        , nickname = $/nickname/ 
     WHERE id = $/id/ 
     RETURNING *
   `;
