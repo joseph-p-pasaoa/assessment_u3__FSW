@@ -15,10 +15,12 @@
    <div id="base-flex">
 
       <h1>Under the Seas Database App</h1>
-      <button type="button" id="btnAllSightings" name="btnAllSightings">All sightings</button>
-      <label>Researcher ID:</label>
-      <input type="text" id="txtResearcher" name="txtResearcher" placeholder="Enter Researcher ID" />
-      <button type="button" id="btnOneResearcher" name="btnOneResearcher">Sightings of Researcher</button>
+      <div id="byResearcher">
+         <label>Choose researcher scope: </label>
+         <select id="selResearcher" name="selResearcher">
+            <option value="" name="selResearcher" selected>All researchers</option>
+         </select>
+      </div>
       <hr>
       <div id="stage"></div>
 
