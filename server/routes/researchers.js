@@ -15,7 +15,7 @@ const express = require('express');
 /* ROUTES */
 router.get('/', getResearchers);
 router.get('/:id', checkInputContent, getResearchers);
-router.post('/', checkInputsExist, checkInputContent, preventDupe, addResearcher); // MADE CHECK BUT I'M ALLOWING DUPE NAMES
+router.post('/', checkInputsExist, checkInputContent, /* preventDupe, */ addResearcher); // MADE CHECK BUT I'M ALLOWING DUPE NAMES
 router.patch('/:id', checkInputsExist, checkIdExists, checkInputContent, patchResearcher);
 router.delete('/:id', checkIdExists, delResearcher);
 
