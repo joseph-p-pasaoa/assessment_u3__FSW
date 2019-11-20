@@ -1,12 +1,13 @@
 {
-  "name": "server",
+  "name": "under-the-seas-server__unit3-assessment",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "unit 3 assessment - server",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
-  "author": "",
+  "author": "Joseph P. Pasaoa <joseph.p.pasaoa@gmail.com> (http://github.com/joseph-p-pasaoa)",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

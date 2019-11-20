@@ -111,9 +111,8 @@ hr {
 }
 
 div.card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 19px 261px 159px 96px 96px;
   justify-content: flex-start;
   align-items: baseline;
   

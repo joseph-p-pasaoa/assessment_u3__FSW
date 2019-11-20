@@ -1,5 +1,9 @@
 ### Developer: Joseph P. Pasaoa
-Live link: Pending
+
+**TO DO**
+
++ Separation of concerns: routes => routes + queries
++ Soft delete prototype sys
 
 ---
 
